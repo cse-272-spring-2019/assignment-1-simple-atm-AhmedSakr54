@@ -37,14 +37,15 @@ public class History {
 			}
 			}
 			else {
+				this.historyIndex++;
 				AlertMessage.display("Alert", "No more saved history");
 				return null;
-		}
+				}
 	}
 	
 	public String next(int historyIndex) {
-		if(history.size() > 0) {
-			if(historyIndex < history.size() && historyIndex >= 0 && history.size() > 0) {
+		if(history.size() > 0 && historyIndex-1 < history.size()) {
+			if(historyIndex < history.size() && historyIndex >= 0) {
 				String message;
 				message = this.history.get(this.historyIndex).getType() + " : " + this.history.get(this.historyIndex).getValue() ;
 				return message;
@@ -56,6 +57,7 @@ public class History {
 			}
 		}
 		else {
+			this.historyIndex--;
 			AlertMessage.display("Alert", "No further history");
 			return null;
 		}
